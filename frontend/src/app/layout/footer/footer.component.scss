@@ -1,0 +1,28 @@
+.app-footer {
+  border-top: 1px solid var(--border-subtle);
+  background: var(--bg-footer);
+  backdrop-filter: var(--backdrop-blur);
+  padding: 20px 24px;
+  margin-top: 40px;
+  transition: background-color var(--transition-normal), border-color var(--transition-normal);
+}
+
+.footer-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.footer-badge {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.725rem;
+}

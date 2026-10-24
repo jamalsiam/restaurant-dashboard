@@ -1,0 +1,151 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  flex: 1;
+
+  app-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    flex: 1;
+  }
+}
+
+.chart-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1;
+  height: 100%;
+  gap: 32px;
+  padding: 8px 4px;
+}
+
+.donut-pane {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.bars-pane {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+  min-width: 0;
+  gap: 16px;
+}
+
+@media (max-width: 768px) {
+  .chart-content {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 24px;
+  }
+}
+
+.bar-row {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.bar-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.875rem;
+}
+
+.bar-name-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cat-indicator {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex-shrink: 0;
+
+  &.cat-dot-mains {
+    background: #6366f1;
+    box-shadow: 0 0 6px rgba(99, 102, 241, 0.5);
+  }
+  &.cat-dot-appetizers {
+    background: #10b981;
+    box-shadow: 0 0 6px rgba(16, 185, 129, 0.5);
+  }
+  &.cat-dot-beverages {
+    background: #06b6d4;
+    box-shadow: 0 0 6px rgba(6, 182, 212, 0.5);
+  }
+  &.cat-dot-desserts {
+    background: #ec4899;
+    box-shadow: 0 0 6px rgba(236, 72, 153, 0.5);
+  }
+  &.cat-dot-sides {
+    background: #f59e0b;
+    box-shadow: 0 0 6px rgba(245, 158, 11, 0.5);
+  }
+}
+
+.bar-name {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.bar-stats {
+  color: var(--text-secondary);
+  font-size: 0.825rem;
+
+  strong {
+    color: var(--text-primary);
+    font-weight: 700;
+  }
+}
+
+.bar-pct {
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-left: 6px;
+}
+
+.progress-track {
+  width: 100%;
+  height: 8px;
+  background: var(--border-subtle);
+  border-radius: 999px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &.fill-mains {
+    background: linear-gradient(90deg, #6366f1, #818cf8);
+    box-shadow: 0 0 10px rgba(99, 102, 241, 0.35);
+  }
+  &.fill-appetizers {
+    background: linear-gradient(90deg, #059669, #10b981);
+    box-shadow: 0 0 10px rgba(16, 185, 129, 0.35);
+  }
+  &.fill-beverages {
+    background: linear-gradient(90deg, #0284c7, #06b6d4);
+    box-shadow: 0 0 10px rgba(6, 182, 212, 0.35);
+  }
+  &.fill-desserts {
+    background: linear-gradient(90deg, #db2777, #ec4899);
+    box-shadow: 0 0 10px rgba(236, 72, 153, 0.35);
+  }
+  &.fill-sides {
+    background: linear-gradient(90deg, #d97706, #f59e0b);
+    box-shadow: 0 0 10px rgba(245, 158, 11, 0.35);
+  }
+}

@@ -1,0 +1,36 @@
+<div class="donut-chart-container" [style.width.px]="size()" [style.height.px]="size()">
+  <!-- ECharts Canvas/SVG Mount Point -->
+  <div
+    #chartHost
+    class="chart-canvas-host"
+    [style.width.px]="size()"
+    [style.height.px]="size()"
+    role="img"
+    [attr.aria-label]="ariaLabel()"
+  ></div>
+
+  <!-- Interactive Center Info Overlay -->
+  <div class="donut-center-overlay" aria-hidden="true">
+    <span class="center-value">{{ displayCenterValue() }}</span>
+    <span class="center-label">{{ displayCenterLabel() }}</span>
+    @if (displayCenterPercentage(); as pct) {
+      <span class="center-pct">{{ pct }}</span>
+    }
+  </div>
+</div>
+
+<!-- Optional Integrated Legend -->
+@if (showLegend() && segments().length > 0) {
+  <div class="donut-legend">
+    @for (s of segments(); track s.label) {
+      <div
+        class="legend-item"
+        [class.active]="hoveredSegment()?.label === s.label"
+      >
+        <span class="legend-dot" [style.background-color]="s.color"></span>
+        <span class="legend-name">{{ s.label }}</span>
+        <span class="legend-value">{{ s.value | number }}</span>
+      </div>
+    }
+  </div>
+}

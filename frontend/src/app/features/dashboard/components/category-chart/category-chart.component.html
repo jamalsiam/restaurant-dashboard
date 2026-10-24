@@ -1,0 +1,51 @@
+<app-card
+  title="Menu Item Distribution by Category"
+  subtitle="Visual breakdown of records across entire dataset"
+  [hasHeaderActions]="true"
+>
+  <app-badge card-header-actions variant="primary" text="5 Categories" />
+
+  <div class="chart-content">
+    <div class="donut-pane">
+      <app-donut-chart
+        [segments]="donutSegments"
+        [total]="totalItems"
+        [size]="190"
+        [thickness]="22"
+        centerLabel="Total Items"
+        ariaLabel="Menu items distribution by category donut chart"
+      />
+    </div>
+
+    <div class="bars-pane">
+      @for (cat of categories; track cat) {
+        <div class="bar-row">
+          <div class="bar-info">
+            <div class="bar-name-group">
+              <span class="cat-indicator" [class]="'cat-dot-' + cat.toLowerCase()"></span>
+              <span class="bar-name">{{ cat }}</span>
+            </div>
+            <span class="bar-stats">
+              <strong>{{ getCategoryCount(cat) | number }}</strong> items
+              <span class="bar-pct">({{ getCategoryPercentage(cat) }}%)</span>
+            </span>
+          </div>
+          <div
+            class="progress-track"
+            role="progressbar"
+            [attr.aria-valuenow]="getCategoryPercentage(cat)"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            [attr.aria-label]="cat + ' distribution ' + getCategoryPercentage(cat) + ' percent'"
+          >
+            <div
+              class="progress-fill"
+              [class]="'fill-' + cat.toLowerCase()"
+              [style.width.%]="getCategoryPercentage(cat)"
+            ></div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</app-card>

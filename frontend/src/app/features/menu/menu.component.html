@@ -1,0 +1,23 @@
+<div class="menu-explorer-container">
+  <!-- Clean Production Header -->
+  <header class="explorer-header">
+    <div>
+      <h1 class="page-title">Menu Data Explorer</h1>
+      <p class="page-subtitle">
+        Filter, search, and manage multi-branch catalog items, pricing, and live inventory.
+      </p>
+    </div>
+  </header>
+
+  <!-- Filter Controls Panel Component -->
+  <app-filter-bar />
+
+  <!-- Data Table & Pagination Card -->
+  <section class="table-card glass-panel" aria-label="Menu items table and pagination">
+    <app-menu-table />
+    <app-pagination />
+  </section>
+
+  <!-- Edit Modal Component -->
+  <app-edit-item-modal />
+</div>

@@ -1,9 +1,25 @@
 import { Routes } from '@angular/router';
-import { DashboardComponent } from './features/dashboard/dashboard.component';
-import { MenuComponent } from './features/menu/menu.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'menu', component: MenuComponent },
+  {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'dashboard',
+  },
+  {
+    path: 'dashboard',
+    loadComponent: () =>
+      import('./features/dashboard/dashboard.component').then(
+        (m) => m.DashboardComponent,
+      ),
+  },
+  {
+    path: 'menu',
+    loadComponent: () =>
+      import('./features/menu/menu.component').then((m) => m.MenuComponent),
+  },
+  {
+    path: '**',
+    redirectTo: 'dashboard',
+  },
 ];

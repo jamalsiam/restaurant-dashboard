@@ -1,0 +1,65 @@
+.filters-card {
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border-radius: var(--radius-lg);
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+}
+
+.filters-top-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 16px;
+  align-items: center;
+}
+
+@media (max-width: 900px) {
+  .filters-top-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.filters-bottom-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+}
+
+.field-icon {
+  margin-right: 8px;
+  color: var(--text-muted);
+}
+
+.currency-prefix {
+  margin-right: 4px;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.filter-field-sm {
+  min-width: 170px;
+  flex: 1;
+}
+
+.price-range-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.price-field {
+  width: 132px;
+}
+
+.range-dash {
+  color: var(--text-muted);
+  font-weight: 700;
+}
+
+.reset-btn-wrapper {
+  margin-left: auto;
+}
+

@@ -1,0 +1,122 @@
+.table-container {
+  width: 100%;
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.data-table {
+  width: 100%;
+  background: transparent !important;
+}
+
+th.mat-mdc-header-cell {
+  background: var(--bg-table-head) !important;
+  color: var(--text-muted) !important;
+  font-size: 0.75rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 14px 18px !important;
+  border-bottom: 1px solid var(--border-subtle) !important;
+  white-space: nowrap;
+  user-select: none;
+}
+
+th.mat-mdc-header-cell.sortable {
+  cursor: pointer;
+
+  &:hover {
+    color: var(--text-primary) !important;
+    background: var(--bg-card-hover) !important;
+  }
+}
+
+.sort-icon {
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  vertical-align: middle;
+  margin-left: 4px;
+  color: var(--primary);
+}
+
+td.mat-mdc-cell {
+  padding: 14px 18px !important;
+  border-bottom: 1px solid var(--border-subtle) !important;
+  font-size: 0.875rem !important;
+  color: var(--text-primary) !important;
+}
+
+.table-row {
+  transition: background-color var(--transition-fast);
+
+  &:hover {
+    background-color: var(--bg-table-row-hover) !important;
+  }
+}
+
+.item-name {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.location-stack {
+  display: flex;
+  flex-direction: column;
+}
+
+.rest-name {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.branch-name {
+  color: var(--text-muted);
+  font-size: 0.775rem;
+}
+
+.price-cell {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.date-cell {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+
+.status-mat-icon {
+  font-size: 14px;
+  width: 14px;
+  height: 14px;
+}
+
+.col-actions {
+  white-space: nowrap;
+
+  app-button .shared-btn,
+  app-button button {
+    height: 32px !important;
+    padding: 0 12px !important;
+    font-size: 0.8rem !important;
+    border-radius: var(--radius-sm) !important;
+    border-color: rgba(99, 102, 241, 0.3) !important;
+    color: var(--primary) !important;
+
+    .btn-icon {
+      font-size: 15px !important;
+      width: 15px !important;
+      height: 15px !important;
+    }
+
+    &:hover {
+      background: var(--primary) !important;
+      color: #ffffff !important;
+    }
+  }
+}

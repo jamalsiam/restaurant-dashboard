@@ -1,0 +1,137 @@
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(4, 7, 13, 0.75);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+  animation: fadeIn 0.15s ease-out;
+}
+
+[data-theme="light"] .modal-backdrop {
+  background: rgba(15, 23, 42, 0.45);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal-dialog {
+  width: 100%;
+  max-width: 520px;
+  background: var(--bg-modal);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  transition: background-color var(--transition-normal);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--border-subtle);
+  background: var(--bg-card);
+}
+
+.header-left {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.close-mat-btn {
+  color: var(--text-muted) !important;
+
+  &:hover {
+    color: var(--text-primary) !important;
+  }
+}
+
+.modal-body {
+  padding: 24px;
+}
+
+.item-title {
+  font-size: 1.4rem;
+  margin-bottom: 6px;
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.item-location {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+}
+
+.alert-danger {
+  background: var(--danger-bg);
+  color: var(--danger);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  margin-bottom: 18px;
+  font-size: 0.85rem;
+}
+
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.full-width-field {
+  width: 100%;
+}
+
+.price-prefix {
+  margin-left: 10px;
+  margin-right: 6px;
+  color: var(--text-muted);
+  font-weight: 700;
+}
+
+.toggle-row {
+  padding: 8px 0;
+}
+
+.toggle-text {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.meta-info {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  padding-top: 4px;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 12px;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.save-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: var(--radius-md) !important;
+}
+
+.button-spinner {
+  display: inline-block;
+  margin-right: 6px;
+}

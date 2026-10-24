@@ -7,8 +7,11 @@
   width: 100%;
 
   .input-prefix {
-    margin-right: 4px;
+    margin-left: 10px;
+    margin-right: 6px;
     color: var(--text-muted);
     font-weight: 600;
+    user-select: none;
+    font-size: 0.95rem;
   }
 }

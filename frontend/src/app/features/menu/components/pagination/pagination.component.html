@@ -1,0 +1,85 @@
+<footer class="pagination-footer" aria-label="Table pagination">
+  <div class="pagination-info">
+    <span>
+      Showing
+      <strong>{{ getRangeStart() }}</strong> to
+      <strong>{{ getRangeEnd() }}</strong> of
+      <strong>{{ state.total() | number }}</strong> items
+    </span>
+  </div>
+
+  <div class="pagination-controls">
+    <!-- Page Size Dropdown with MatSelect -->
+    <div class="page-size-wrap">
+      <span class="control-label" id="pageSizeLabel">Rows per page:</span>
+      <mat-form-field appearance="outline" class="compact-field" subscriptSizing="dynamic">
+        <mat-select
+          aria-labelledby="pageSizeLabel"
+          [ngModel]="state.pageSize()"
+          (ngModelChange)="state.setPageSize($event)"
+        >
+          <mat-option [value]="10">10</mat-option>
+          <mat-option [value]="25">25</mat-option>
+          <mat-option [value]="50">50</mat-option>
+          <mat-option [value]="100">100</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <!-- Page Navigation Buttons with MatIconButton -->
+    <div class="btn-group">
+      <button
+        mat-icon-button
+        type="button"
+        class="btn-page-mat"
+        [disabled]="state.page() <= 1 || state.loading()"
+        (click)="state.setPage(1)"
+        title="First Page"
+        aria-label="Navigate to first page"
+      >
+        <mat-icon>first_page</mat-icon>
+      </button>
+
+      <button
+        mat-icon-button
+        type="button"
+        class="btn-page-mat"
+        [disabled]="state.page() <= 1 || state.loading()"
+        (click)="state.setPage(state.page() - 1)"
+        title="Previous Page"
+        aria-label="Navigate to previous page"
+      >
+        <mat-icon>chevron_left</mat-icon>
+      </button>
+
+      <span class="page-indicator">
+        Page <strong>{{ state.page() }}</strong> of
+        <strong>{{ state.totalPages() }}</strong>
+      </span>
+
+      <button
+        mat-icon-button
+        type="button"
+        class="btn-page-mat"
+        [disabled]="state.page() >= state.totalPages() || state.loading()"
+        (click)="state.setPage(state.page() + 1)"
+        title="Next Page"
+        aria-label="Navigate to next page"
+      >
+        <mat-icon>chevron_right</mat-icon>
+      </button>
+
+      <button
+        mat-icon-button
+        type="button"
+        class="btn-page-mat"
+        [disabled]="state.page() >= state.totalPages() || state.loading()"
+        (click)="state.setPage(state.totalPages())"
+        title="Last Page"
+        aria-label="Navigate to last page"
+      >
+        <mat-icon>last_page</mat-icon>
+      </button>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,149 @@
+<div class="table-container">
+  @if (state.loading()) {
+    <app-loading-spinner message="Loading server records from 50,000 catalog items..." />
+  } @else if (state.error(); as err) {
+    <app-empty-state
+      title="Unable to Load Menu Items"
+      [description]="err"
+      icon="error_outline"
+      [isError]="true"
+      actionText="Retry Request"
+      (actionClicked)="state.dispatchQuery()"
+    />
+  } @else if (state.items().length === 0) {
+    <app-empty-state
+      title="No menu items found"
+      description="Try adjusting your search query, price ranges, or selected filters."
+      icon="restaurant_menu"
+      [actionText]="state.hasActiveFilters() ? 'Clear Active Filters' : ''"
+      (actionClicked)="state.resetFilters()"
+    />
+  } @else {
+    <div class="table-responsive">
+      <table mat-table [dataSource]="state.items()" [trackBy]="trackByItemId" class="data-table mat-elevation-z0">
+        <!-- Item ID Column -->
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef class="col-id">Item ID</th>
+          <td mat-cell *matCellDef="let item">
+            <span class="badge badge-id">{{ item.id }}</span>
+          </td>
+        </ng-container>
+
+        <!-- Name Column with Sort -->
+        <ng-container matColumnDef="name">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            class="col-name sortable"
+            tabindex="0"
+            role="columnheader"
+            [attr.aria-sort]="getSortAria('name')"
+            (click)="state.setSorting('name')"
+            (keydown.enter)="state.setSorting('name')"
+            (keydown.space)="state.setSorting('name'); $event.preventDefault()"
+          >
+            Dish / Item Name
+            @if (state.sortBy() === 'name') {
+              <mat-icon class="sort-icon">{{ state.sortOrder() === 'ASC' ? 'arrow_upward' : 'arrow_downward' }}</mat-icon>
+            }
+          </th>
+          <td mat-cell *matCellDef="let item">
+            <strong class="item-name">{{ item.name }}</strong>
+          </td>
+        </ng-container>
+
+        <!-- Category Column -->
+        <ng-container matColumnDef="category">
+          <th mat-header-cell *matHeaderCellDef class="col-cat">Category</th>
+          <td mat-cell *matCellDef="let item">
+            <app-badge [category]="item.category" />
+          </td>
+        </ng-container>
+
+        <!-- Restaurant & Branch Column -->
+        <ng-container matColumnDef="location">
+          <th mat-header-cell *matHeaderCellDef class="col-loc">Restaurant & Branch</th>
+          <td mat-cell *matCellDef="let item">
+            <div class="location-stack">
+              <span class="rest-name">{{ item.restaurantName }}</span>
+              <span class="branch-name">{{ item.branchName }}</span>
+            </div>
+          </td>
+        </ng-container>
+
+        <!-- Price Column with Sort -->
+        <ng-container matColumnDef="price">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            class="col-price sortable"
+            tabindex="0"
+            role="columnheader"
+            [attr.aria-sort]="getSortAria('price')"
+            (click)="state.setSorting('price')"
+            (keydown.enter)="state.setSorting('price')"
+            (keydown.space)="state.setSorting('price'); $event.preventDefault()"
+          >
+            Price
+            @if (state.sortBy() === 'price') {
+              <mat-icon class="sort-icon">{{ state.sortOrder() === 'ASC' ? 'arrow_upward' : 'arrow_downward' }}</mat-icon>
+            }
+          </th>
+          <td mat-cell *matCellDef="let item" class="price-cell">
+            ${{ item.price | number: '1.2-2' }}
+          </td>
+        </ng-container>
+
+        <!-- Status Column -->
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef class="col-status">Status</th>
+          <td mat-cell *matCellDef="let item">
+            <app-badge [isAvailable]="item.isAvailable" />
+          </td>
+        </ng-container>
+
+        <!-- Updated Date Column with Sort -->
+        <ng-container matColumnDef="updatedAt">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            class="col-date sortable"
+            tabindex="0"
+            role="columnheader"
+            [attr.aria-sort]="getSortAria('updatedAt')"
+            (click)="state.setSorting('updatedAt')"
+            (keydown.enter)="state.setSorting('updatedAt')"
+            (keydown.space)="state.setSorting('updatedAt'); $event.preventDefault()"
+          >
+            Last Updated
+            @if (state.sortBy() === 'updatedAt') {
+              <mat-icon class="sort-icon">{{ state.sortOrder() === 'ASC' ? 'arrow_upward' : 'arrow_downward' }}</mat-icon>
+            }
+          </th>
+          <td mat-cell *matCellDef="let item" class="date-cell">
+            {{ item.updatedAt | date: 'short' }}
+          </td>
+        </ng-container>
+
+        <!-- Actions Column -->
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef class="col-actions">Actions</th>
+          <td mat-cell *matCellDef="let item">
+            <app-button
+              variant="stroked"
+              icon="edit"
+              [ariaLabel]="'Edit price and availability for ' + item.name"
+              (btnClick)="state.openEditModal(item)"
+            >
+              Edit
+            </app-button>
+          </td>
+        </ng-container>
+
+        <!-- Header and Row Declarations -->
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="table-row"></tr>
+      </table>
+    </div>
+  }
+</div>

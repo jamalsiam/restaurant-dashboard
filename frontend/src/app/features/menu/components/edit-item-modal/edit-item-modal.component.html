@@ -1,0 +1,101 @@
+@if (state.isEditModalOpen() && state.selectedItem(); as item) {
+  <div class="modal-backdrop" (click)="onBackdropClick($event)">
+    <div
+      class="modal-dialog glass-panel"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="editItemDialogTitle"
+      (click)="$event.stopPropagation()"
+    >
+      <header class="modal-header">
+        <div class="header-left">
+          <span class="badge badge-id">{{ item.id }}</span>
+          <app-badge [category]="item.category" />
+        </div>
+        <button
+          mat-icon-button
+          type="button"
+          (click)="state.closeEditModal()"
+          aria-label="Close edit dialog"
+          class="close-mat-btn"
+        >
+          <mat-icon>close</mat-icon>
+        </button>
+      </header>
+
+      <div class="modal-body">
+        <h2 class="item-title" id="editItemDialogTitle">{{ item.name }}</h2>
+        <p class="item-location">
+          📍 {{ item.restaurantName }} · <span>{{ item.branchName }}</span>
+        </p>
+
+        @if (state.updateError()) {
+          <div class="alert-danger" role="alert">
+            <span>⚠️ {{ state.updateError() }}</span>
+          </div>
+        }
+
+        <form [formGroup]="form" (ngSubmit)="onSubmit()" class="edit-form">
+          <!-- Price Field with MatFormField -->
+          <mat-form-field appearance="outline" class="full-width-field">
+            <mat-label>Price (USD)</mat-label>
+            <span matPrefix class="price-prefix">$</span>
+            <input
+              matInput
+              id="priceInput"
+              type="number"
+              step="0.01"
+              min="0"
+              aria-required="true"
+              formControlName="price"
+              placeholder="0.00"
+            />
+            @if (priceControl.invalid && priceControl.touched) {
+              <mat-error id="priceError">
+                @if (priceControl.hasError('required')) {
+                  Price is required.
+                } @else if (priceControl.hasError('min')) {
+                  Price must be at least 0.00.
+                }
+              </mat-error>
+            }
+          </mat-form-field>
+
+          <!-- Availability with MatSlideToggle -->
+          <div class="toggle-row">
+            <mat-slide-toggle formControlName="isAvailable" color="primary">
+              <span class="toggle-text">
+                {{ form.value.isAvailable ? 'Available for Live POS Ordering' : 'Currently Out of Stock / Inactive' }}
+              </span>
+            </mat-slide-toggle>
+          </div>
+
+          <div class="meta-info">
+            <span>Last Updated: {{ item.updatedAt | date: 'medium' }}</span>
+          </div>
+
+          <footer class="modal-footer">
+            <app-button
+              variant="stroked"
+              type="button"
+              [disabled]="state.isUpdating()"
+              (btnClick)="state.closeEditModal()"
+              ariaLabel="Cancel editing"
+            >
+              Cancel
+            </app-button>
+            <app-button
+              variant="primary"
+              type="submit"
+              [disabled]="form.invalid || state.isUpdating()"
+              ariaLabel="Save item changes"
+              [icon]="state.isUpdating() ? 'sync' : 'check'"
+            >
+              {{ state.isUpdating() ? 'Saving...' : 'Save Changes' }}
+            </app-button>
+          </footer>
+        </form>
+      </div>
+    </div>
+  </div>
+}

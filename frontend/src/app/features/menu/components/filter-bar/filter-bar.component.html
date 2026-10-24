@@ -1,0 +1,97 @@
+<section class="filters-card glass-panel" aria-label="Menu filtering controls">
+  <div class="filters-top-row">
+    <!-- Reusable Shared Search Box Component -->
+    <app-search-box
+      class="search-col"
+      label="Search Dish"
+      placeholder="e.g. Ribeye, Truffle, Latte..."
+      ariaLabel="Search menu items by dish name"
+      [value]="state.search()"
+      (valueChange)="state.onSearchChange($event)"
+      (cleared)="state.clearSearch()"
+    />
+
+    <!-- Reusable Shared Single Select: Restaurant Chain -->
+    <app-single-select
+      label="Restaurant Chain"
+      ariaLabel="Filter by restaurant chain"
+      [value]="state.restaurantId()"
+      [options]="restaurantOptions()"
+      (valueChange)="state.setRestaurant($event)"
+    />
+
+    <!-- Reusable Shared Single Select: Restaurant Branch -->
+    <app-single-select
+      label="Restaurant Branch"
+      ariaLabel="Filter by restaurant branch"
+      [disabled]="!state.restaurantId()"
+      [value]="state.branchId()"
+      [options]="branchOptions()"
+      (valueChange)="state.setBranch($event)"
+    />
+  </div>
+
+  <div class="filters-bottom-row">
+    <!-- Reusable Shared Single Select: Category -->
+    <app-single-select
+      class="filter-field-sm"
+      label="Category"
+      ariaLabel="Filter by menu category"
+      [value]="state.category()"
+      [options]="categoryOptions"
+      (valueChange)="state.setCategory($event)"
+    />
+
+    <!-- Reusable Shared Single Select: Availability -->
+    <app-single-select
+      class="filter-field-sm"
+      label="Availability"
+      ariaLabel="Filter by availability status"
+      [value]="state.availability()"
+      [options]="availabilityOptions"
+      (valueChange)="state.setAvailability($event)"
+    />
+
+    <!-- Price Range Min & Max with Shared Input Component -->
+    <div class="price-range-group">
+      <app-input
+        class="price-field"
+        label="Min Price"
+        type="number"
+        prefix="$"
+        placeholder="0"
+        [min]="0"
+        ariaLabel="Minimum price in dollars"
+        [value]="state.minPrice()"
+        (valueChange)="onMinPriceChange($event)"
+      />
+
+      <span class="range-dash" aria-hidden="true">—</span>
+
+      <app-input
+        class="price-field"
+        label="Max Price"
+        type="number"
+        prefix="$"
+        placeholder="100"
+        [min]="0"
+        ariaLabel="Maximum price in dollars"
+        [value]="state.maxPrice()"
+        (valueChange)="onMaxPriceChange($event)"
+      />
+    </div>
+
+    <!-- Reusable Shared Button Component: Reset Filters -->
+    @if (state.hasActiveFilters()) {
+      <app-button
+        variant="stroked"
+        icon="restart_alt"
+        ariaLabel="Reset all active filters"
+        (btnClick)="state.resetFilters()"
+        class="reset-btn-wrapper"
+      >
+        Reset Filters
+      </app-button>
+    }
+  </div>
+</section>

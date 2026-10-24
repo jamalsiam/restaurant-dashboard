@@ -1,0 +1,71 @@
+// Dark Theme (Default)
+$bg-app: #0b0f19;
+$bg-card: rgba(18, 24, 38, 0.75);
+$bg-card-hover: rgba(26, 34, 52, 0.85);
+$bg-card-solid: #121826;
+$bg-input: #1a2234;
+$bg-dropdown: #161e2e;
+$bg-navbar: #0f172a;
+$bg-footer: rgba(11, 15, 25, 0.5);
+$bg-modal: #141c2e;
+
+$border-subtle: rgba(255, 255, 255, 0.08);
+$border-focus: #6366f1;
+
+$text-primary: #f8fafc;
+$text-secondary: #94a3b8;
+$text-muted: #64748b;
+
+$primary: #6366f1;
+$primary-glow: rgba(99, 102, 241, 0.25);
+$primary-hover: #4f46e5;
+
+$success: #10b981;
+$success-bg: rgba(16, 185, 129, 0.12);
+$warning: #f59e0b;
+$warning-bg: rgba(245, 158, 11, 0.12);
+$danger: #ef4444;
+$danger-bg: rgba(239, 68, 68, 0.12);
+$info: #0ea5e9;
+
+// Light Theme Palette
+$light-bg-app: #f4f6fa;
+$light-bg-card: rgba(255, 255, 255, 0.9);
+$light-bg-card-hover: #ffffff;
+$light-bg-card-solid: #ffffff;
+$light-bg-input: #ffffff;
+$light-bg-dropdown: #ffffff;
+$light-bg-navbar: #ffffff;
+$light-bg-footer: rgba(241, 245, 249, 0.8);
+$light-bg-modal: #ffffff;
+
+$light-border-subtle: #e2e8f0;
+$light-border-focus: #4f46e5;
+
+$light-text-primary: #0f172a;
+$light-text-secondary: #475569;
+$light-text-muted: #64748b;
+
+$light-primary: #4f46e5;
+$light-primary-glow: rgba(79, 70, 229, 0.15);
+$light-primary-hover: #4338ca;
+
+// Spacing & Radius
+$radius-sm: 6px;
+$radius-md: 10px;
+$radius-lg: 16px;
+$radius-xl: 22px;
+
+// Shadows
+$shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+$shadow-md: 0 4px 20px -2px rgba(0, 0, 0, 0.4);
+$shadow-lg: 0 10px 30px -4px rgba(0, 0, 0, 0.5);
+$shadow-glow: 0 0 25px rgba(99, 102, 241, 0.2);
+
+$light-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+$light-shadow-md: 0 4px 18px -2px rgba(15, 23, 42, 0.06);
+$light-shadow-lg: 0 10px 25px -4px rgba(15, 23, 42, 0.08);
+
+$backdrop-blur: blur(16px);
+$transition-fast: 0.15s ease;
+$transition-normal: 0.25s ease;

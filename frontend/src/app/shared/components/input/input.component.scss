@@ -1,6 +1,14 @@
 :host {
   display: block;
-}
-input {
   width: 100%;
+}
+
+.shared-input-field {
+  width: 100%;
+
+  .input-prefix {
+    margin-right: 4px;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
 }

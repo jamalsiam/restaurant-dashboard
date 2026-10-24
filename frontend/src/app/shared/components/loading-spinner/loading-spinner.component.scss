@@ -1,0 +1,15 @@
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 40px 20px;
+  color: var(--text-secondary);
+}
+
+.loading-text {
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}

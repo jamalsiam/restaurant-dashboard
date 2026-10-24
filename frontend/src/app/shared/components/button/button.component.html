@@ -1,0 +1,15 @@
+<button
+  mat-button
+  [class]="'shared-btn ' + variant() + '-variant'"
+  [type]="type()"
+  [disabled]="disabled()"
+  [attr.aria-label]="ariaLabel()"
+  (click)="btnClick.emit($event)"
+>
+  @if (icon()) {
+    <mat-icon class="btn-icon">{{ icon() }}</mat-icon>
+  }
+  <span class="btn-text">
+    <ng-content></ng-content>
+  </span>
+</button>

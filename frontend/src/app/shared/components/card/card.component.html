@@ -1,0 +1,30 @@
+<article
+  class="shared-card"
+  [class.glass-panel]="variant() === 'glass'"
+  [class.solid-panel]="variant() === 'solid'"
+  [class.elevated]="elevated()"
+>
+  @if (title() || subtitle() || hasHeaderActions()) {
+    <header class="card-header">
+      <div class="card-title-group">
+        @if (title()) {
+          <h2 class="card-title">{{ title() }}</h2>
+        }
+        @if (subtitle()) {
+          <p class="card-subtitle">{{ subtitle() }}</p>
+        }
+      </div>
+      <div class="card-actions-slot">
+        <ng-content select="[card-header-actions]"></ng-content>
+      </div>
+    </header>
+  }
+
+  <div class="card-body">
+    <ng-content></ng-content>
+  </div>
+
+  <footer class="card-footer-slot">
+    <ng-content select="[card-footer]"></ng-content>
+  </footer>
+</article>

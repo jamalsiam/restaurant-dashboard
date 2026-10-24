@@ -1,0 +1,10 @@
+<span
+  class="shared-badge"
+  [class]="badgeClass()"
+  [attr.aria-label]="ariaLabel() || displayText()"
+>
+  @if (showDot()) {
+    <span class="badge-dot" aria-hidden="true"></span>
+  }
+  <span class="badge-text"><ng-content>{{ displayText() }}</ng-content></span>
+</span>

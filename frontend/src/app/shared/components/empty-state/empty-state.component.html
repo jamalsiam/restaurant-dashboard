@@ -1,0 +1,19 @@
+<div class="empty-state-card" [class.is-error]="isError" role="status">
+  <div class="empty-icon-wrapper">
+    <mat-icon class="state-icon">{{ icon }}</mat-icon>
+  </div>
+  <h3 class="state-title">{{ title }}</h3>
+  @if (description) {
+    <p class="state-desc">{{ description }}</p>
+  }
+  @if (actionText) {
+    <button
+      mat-flat-button
+      [color]="isError ? 'warn' : 'primary'"
+      (click)="onAction()"
+      class="state-action-btn"
+    >
+      {{ actionText }}
+    </button>
+  }
+</div>

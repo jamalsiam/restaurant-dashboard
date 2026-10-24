@@ -1,0 +1,13 @@
+<mat-form-field appearance="outline" class="shared-select-field" subscriptSizing="dynamic">
+  <mat-label>{{ label() }}</mat-label>
+  <mat-select
+    [disabled]="disabled()"
+    [attr.aria-label]="ariaLabel() || label()"
+    [ngModel]="value()"
+    (ngModelChange)="valueChange.emit($event)"
+  >
+    @for (opt of options(); track opt.value) {
+      <mat-option [value]="opt.value">{{ opt.label }}</mat-option>
+    }
+  </mat-select>
+</mat-form-field>

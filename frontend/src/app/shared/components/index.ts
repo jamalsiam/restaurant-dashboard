@@ -7,3 +7,4 @@ export * from './card/card.component';
 export * from './search-box/search-box.component';
 export * from './single-select/single-select.component';
 export * from './input/input.component';
+export * from './donut-chart/donut-chart.component';

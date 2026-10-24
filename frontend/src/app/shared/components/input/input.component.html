@@ -1,0 +1,17 @@
+<mat-form-field appearance="outline" class="shared-input-field" subscriptSizing="dynamic">
+  <mat-label>{{ label() }}</mat-label>
+  @if (prefix()) {
+    <span matPrefix class="input-prefix">{{ prefix() }}</span>
+  }
+  <input
+    matInput
+    [type]="type()"
+    [placeholder]="placeholder()"
+    [min]="min()"
+    [max]="max()"
+    [disabled]="disabled()"
+    [attr.aria-label]="ariaLabel() || label()"
+    [ngModel]="value()"
+    (ngModelChange)="valueChange.emit($event)"
+  />
+</mat-form-field>

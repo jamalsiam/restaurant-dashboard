@@ -1,0 +1,19 @@
+<mat-card class="stat-card glass-panel" appearance="outlined">
+  <div class="stat-card-inner">
+    <div class="stat-icon-box" [ngClass]="iconClass">
+      <mat-icon>{{ icon }}</mat-icon>
+    </div>
+    <div class="stat-content">
+      <span class="stat-label">{{ label }}</span>
+      <div class="stat-value-row">
+        <span class="stat-value" [ngClass]="valueClass">{{ value }}</span>
+        @if (tagText) {
+          <span class="stat-tag" [ngClass]="tagClass">{{ tagText }}</span>
+        }
+      </div>
+      @if (subtitle) {
+        <p class="stat-sub">{{ subtitle }}</p>
+      }
+    </div>
+  </div>
+</mat-card>

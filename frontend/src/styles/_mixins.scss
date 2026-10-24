@@ -1,0 +1,33 @@
+@use './variables' as vars;
+
+@mixin glass-panel {
+  background: var(--bg-card);
+  backdrop-filter: var(--backdrop-blur);
+  -webkit-backdrop-filter: var(--backdrop-blur);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  transition: transform vars.$transition-normal, border-color vars.$transition-normal, background-color vars.$transition-normal;
+
+  &:hover {
+    border-color: rgba(99, 102, 241, 0.3);
+  }
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin responsive-grid($min-width) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax($min-width, 1fr));
+  gap: 20px;
+}

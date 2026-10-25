@@ -104,7 +104,7 @@ export class MenuStateService {
   private initPipeline(): void {
     // Debounce search inputs by 300ms before dispatching query
     this.searchSubscription = this.searchInput$
-      .pipe(debounceTime(1000), distinctUntilChanged())
+      .pipe(debounceTime(500), distinctUntilChanged())
       .subscribe((term) => {
         this.search.set(term);
         this.page.set(1);
@@ -113,7 +113,7 @@ export class MenuStateService {
 
     // Debounce numeric price inputs by 300ms to avoid request flooding on keystrokes
     this.priceSubscription = this.priceInput$
-      .pipe(debounceTime(1000))
+      .pipe(debounceTime(500))
       .subscribe(({ min, max }) => {
         this.minPrice.set(min);
         this.maxPrice.set(max);
